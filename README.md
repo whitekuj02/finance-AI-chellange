@@ -14,11 +14,24 @@
 | :---: | :---: | :---: | :---: |
 | <img src="https://avatars.githubusercontent.com/u/110239629?v=4" width=300> | <img src="https://avatars.githubusercontent.com/u/94896197?v=4" width=300> | <img src="https://avatars.githubusercontent.com/u/105128163?v=4" width=300> | <img src="https://avatars.githubusercontent.com/u/105360496?v=4" width=300> |
 
+<br />
+
 ## 라이브러리
 
 자세한 라이브러리는 ./environment 참고
 
-# code
+<br />
+
+## pipeline
+- RAG system
+![RAG_system](./asset/RAG_system.png)
+
+- LLM system
+![LLM_system](./asset/LLM_system.png)
+
+<br />
+
+## code
 
 - 모델 다운로드
 
@@ -40,10 +53,14 @@ python ./preparing_data/3.\ Rag.py
 streamlit run streamlit_app.py
 ```
 
+<br />
+
 ## 모델
 - RAG 임베딩 모델 : "Alibaba-NLP/gte-multilingual-base"
 - Reranker 모델 : "BAAI/bge-reranker-v2-m3"
 - LLM 모델 : "K-intelligence/Midm-2.0-Base-Instruct"
+
+<br />
 
 ## 데이터 셋
 - ISMS PDF : https://isms.kisa.or.kr/main/ispims/notice/ (KISA 한국인터넷진흥원)

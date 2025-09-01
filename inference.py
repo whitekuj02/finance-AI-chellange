@@ -335,7 +335,7 @@ def infer(question: str, base_path: str | Path = "./model") -> str:
         max_idf = max(idf.values()) if idf else 1.0
 
         def keyword_weight(k: str, alpha: float = 0.7) -> float:
-            """합의(consensus) + (너무 흔한 키워드 패널티) 를 섞은 하이브리드 가중치"""
+            """합의(consensus) + (흔한 키워드) 를 섞은 하이브리드 가중치"""
             if k not in df:
                 return 0.0
             # 합의도 (본인 제외 0~1)
