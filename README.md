@@ -55,6 +55,11 @@ python ./preparing_data/3.\ Rag.py
 streamlit run streamlit_app.py
 ```
 
+- original --> test.csv inference
+```bash
+original_code/1.\ RAG.ipynb
+original_code/2.\ Inference.ipynb
+```
 <br />
 
 ## Model
