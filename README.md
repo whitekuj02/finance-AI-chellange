@@ -1,4 +1,4 @@
-# finance_AI_chellange
+# finance-AI-chellange
 ![panel](./asset/panel.png)
 
 # 2025 금융 AI Challenge : 금융 AI 모델 경쟁
