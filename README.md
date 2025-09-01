@@ -67,5 +67,5 @@ streamlit run streamlit_app.py
 ## Dataset
 - ISMS PDF : https://isms.kisa.or.kr/main/ispims/notice/ (KISA 한국인터넷진흥원)
 - Law PDF : https://www.law.go.kr/ (국가법령정보센터)
-- Tech dataset (multiple) : Trendyol/Trendyol-Cybersecurity-Instruction-Tuning-Dataset (https://huggingface.co/datasets/Trendyol/Trendyol-Cybersecurity-Instruction-Tuning-Dataset)
-- Tech dataset (multiple) : https://github.com/cybermetric/CyberMetric (Github) / https://huggingface.co/datasets/tihanyin/CyberMetric (Huggingface)
+- Tech dataset (multiple choice) : Trendyol/Trendyol-Cybersecurity-Instruction-Tuning-Dataset (https://huggingface.co/datasets/Trendyol/Trendyol-Cybersecurity-Instruction-Tuning-Dataset)
+- Tech dataset (subjective) : https://github.com/cybermetric/CyberMetric (Github) / https://huggingface.co/datasets/tihanyin/CyberMetric (Huggingface)
