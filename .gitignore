@@ -4,3 +4,5 @@ model/gte-multilingual-base
 model/midm2_bf16
 data/tech/combined.jsonl
 data/tech/tech_data.csv
+data/ISMS/merged_text
+data/ISMS/text_pages.json
