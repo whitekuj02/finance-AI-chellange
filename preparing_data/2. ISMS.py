@@ -11,6 +11,10 @@ import re
 from tqdm import tqdm
 
 def extract_text_with_pdfplumber(pdf_path, pages_to_try):
+    """
+    pdfplumber 를 통해 ISMS pdf 를 읽는 함수
+    pdf 종류, page, text, word 개수, line 개수, 이미지 개수 등을 추출
+    """
     pages_info = []
     with pdfplumber.open(pdf_path, repair=True) as pdf:
         for pageno, page in tqdm(enumerate(pdf.pages, start=1), total=len(pdf.pages)):
@@ -34,6 +38,9 @@ def extract_text_with_pdfplumber(pdf_path, pages_to_try):
     return pages_info
 
 def strip_special(text: str, keep_punct: str = "().,:%-/_[]") -> str:
+    """
+    한글, 영어, 숫자, 일부 예외 특수 기호 제외 모두 제거하는 전처리 함수
+    """
     HANGUL = r"\u1100-\u11FF\u3130-\u318F\uAC00-\uD7A3"
     # 다양한 대시류를 하이픈으로 통일(선택)
     text = re.sub(r"[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]", "-", str(text))
@@ -43,6 +50,9 @@ def strip_special(text: str, keep_punct: str = "().,:%-/_[]") -> str:
     return cleaned
 
 def save_txt(JSON_PATH, txt_out_dir):
+    """
+    .txt 파일로 저장하는 함수
+    """
     with JSON_PATH.open("r", encoding="utf-8") as f:
         pages = json.load(f)
 

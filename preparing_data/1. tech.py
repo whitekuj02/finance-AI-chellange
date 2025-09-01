@@ -4,6 +4,9 @@ from tqdm import tqdm
 import pandas as pd
 
 def process_trendyol(trendyol_name: str):
+    """
+    trendyol/cybersecurity 객관식 보안 데이터 셋 로딩 함수
+    """
     ds = load_dataset(trendyol_name, split="train")
     for rec in tqdm(ds, desc="Trendyol→JSONL"):
         q = (rec.get("user") or "").strip()
@@ -12,6 +15,9 @@ def process_trendyol(trendyol_name: str):
             yield {"question": q, "answer": a}
 
 def process_cybermetric(path: str):
+    """
+    cybermetric 주관식 보안 데이터 셋 로딩 함수
+    """
     with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
@@ -52,6 +58,9 @@ def process_cybermetric(path: str):
             yield {"question": q, "answer": str(ans_text).strip()}
 
 def save_jsonl(records, out_path: str):
+    """
+    jsonl 로 한 번에 저장하는 함수
+    """
     n = 0
     with open(out_path, "w", encoding="utf-8") as w:
         for r in records:
@@ -60,6 +69,9 @@ def save_jsonl(records, out_path: str):
     print(f"Saved {n} lines → {out_path}")
 
 def read_jsonl(file_path):
+    """
+    jsonl 을 읽는 함수
+    """
     data = []
     with open(file_path, "r", encoding="utf-8") as f:
         for line in f:
@@ -68,6 +80,9 @@ def read_jsonl(file_path):
     return data
 
 def save_csv(data, save_file_name):
+    """
+    csv 를 저장하는 함수
+    """
     rag_data = []
 
     for d in tqdm(data, total=len(data), desc="csv processing"):

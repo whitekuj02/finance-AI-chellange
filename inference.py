@@ -89,6 +89,9 @@ def all_model_load(base_path: str | Path) -> None:
         )
 
 def _get_models(base_path: str | Path) -> ModelBundle:
+    """
+    모델 불러오기 함수
+    """
     key = str(Path(base_path).resolve())
     if key not in _MODEL_CACHE:
         # 필요 시 지연 로드(또는 에러로 바꿔도 됨)
@@ -112,6 +115,10 @@ def unload_models(base_path: str | Path | None = None) -> None:
         torch.cuda.empty_cache()
 
 def exp_normalize(x):
+    """
+    sigmoid 점수 normalize 함수
+    점수를 0~1 사이로 맵핑
+    """
     return 1 / (1 + np.exp(-x))
 
 # 객관식 여부 판단 함수
@@ -257,7 +264,7 @@ def inference(question, doc, score, tokenizer, model, generation_config):
 def infer(question: str, base_path: str | Path = "./model") -> str:
     """
     다른 파일에서 바로 infer(question)만 호출해도 되도록,
-    내부에서 전역 캐시된 모델을 꺼내 씁니다.
+    내부에서 전역 캐시된 모델을 꺼내쓴다.
     """
     bundle = _get_models(base_path)
 
