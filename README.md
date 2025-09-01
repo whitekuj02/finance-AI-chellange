@@ -18,7 +18,7 @@
 
 ## 라이브러리
 
-자세한 라이브러리는 ./environment 참고
+- 자세한 라이브러리는 ./environment 참고
 
 <br />
 
