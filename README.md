@@ -34,6 +34,12 @@
 <br />
 
 ## Code
+- Conda Setting 
+```bash
+conda env create -f conda.yaml
+conda activate construct
+apt-get update && apt-get install -y ghostscript
+```
 
 - Model download
 
