@@ -314,6 +314,9 @@ def infer(question: str, base_path: str | Path = "./model") -> str:
 
     else:
         def extract_keywords_from_text(t: str) -> list[str]:
+            """
+            LLM output 인 키워드: ~~~ 부분을 자른 후 List 로 반환
+            """
             m = re.search(r"키워드\s*:\s*(.+)", t)
             if not m:
                 return []
@@ -348,7 +351,9 @@ def infer(question: str, base_path: str | Path = "./model") -> str:
 
         # 3) 후보 점수 계산
         def score_candidate(kws: list[str], alpha: float = 0.7) -> float:
-            # 중복 제거 후 각 키워드 가중치 합
+            """
+            중복 제거 후 각 키워드 가중치 합 리턴
+            """
             uniq = set(kws)
             return sum(keyword_weight(k, alpha=alpha) for k in uniq)
 
@@ -356,6 +361,9 @@ def infer(question: str, base_path: str | Path = "./model") -> str:
 
         # 4) tie-breaker: (a) 기존 교집합 수, (b) 키워드 개수 많은 쪽
         def overlap_score(i: int) -> int:
+            """
+            keywords_list[i]와 나머지 리스트들 간의 공통 키워드 개수를 반환합니다.
+            """
             others = set().union(*[set(x) for j, x in enumerate(keywords_list) if j != i])
             return len(set(keywords_list[i]) & others)
 
