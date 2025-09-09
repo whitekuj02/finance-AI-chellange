@@ -23,6 +23,7 @@ def main():
     reranker_id = "BAAI/bge-reranker-v2-m3"
     model_id = "K-intelligence/Midm-2.0-Base-Instruct"
 
+    # 모델 불러오기 ( 온라인 )
     embedding = HuggingFaceEmbeddings(
         model_name=embd_id,
         model_kwargs={"device": "cpu", "trust_remote_code": True},
@@ -49,6 +50,7 @@ def main():
     for d in [EMB_DIR, RER_DIR, LLM_DIR]:
         d.mkdir(parents=True, exist_ok=True)
 
+    # ==== 1) embedding ====
     try:
         if hasattr(embedding, "client") and hasattr(embedding.client, "save"):
             embedding.client.save(str(EMB_DIR))  # SentenceTransformer.save()

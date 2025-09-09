@@ -14,6 +14,10 @@ def extract_text_with_pdfplumber(pdf_path, pages_to_try):
     """
     pdfplumber 를 통해 ISMS pdf 를 읽는 함수
     pdf 종류, page, text, word 개수, line 개수, 이미지 개수 등을 추출
+    pdf_path : pdf 가 있는 path
+    pages_to_try : 이미지가 있을 때 이미지를 불러올 page 를 저장하는 list
+
+    output : pages_info (무슨 pdf, page, 내용, word 개수, line 개수, 이미지 개수)
     """
     pages_info = []
     with pdfplumber.open(pdf_path, repair=True) as pdf:
@@ -40,6 +44,9 @@ def extract_text_with_pdfplumber(pdf_path, pages_to_try):
 def strip_special(text: str, keep_punct: str = "().,:%-/_[]") -> str:
     """
     한글, 영어, 숫자, 일부 예외 특수 기호 제외 모두 제거하는 전처리 함수
+    text : 전처리할 text
+    keep_punct : 지우고 싶지 않은 특수 기호들
+    output : 한글, 영어, 숫자, 일부 예외 특수 기호 제외 모두 제거된 text
     """
     HANGUL = r"\u1100-\u11FF\u3130-\u318F\uAC00-\uD7A3"
     # 다양한 대시류를 하이픈으로 통일(선택)
@@ -51,7 +58,11 @@ def strip_special(text: str, keep_punct: str = "().,:%-/_[]") -> str:
 
 def save_txt(JSON_PATH, txt_out_dir):
     """
-    .txt 파일로 저장하는 함수
+    JSON 데이터를 읽고 .txt 파일로 저장하는 함수
+    JSON_PATH : json 파일 path
+    txt_out_dir : txt 파일을 저장할 폴더 path
+
+    txt 로 저장하는 데이터는 전처리한 text 
     """
     with JSON_PATH.open("r", encoding="utf-8") as f:
         pages = json.load(f)

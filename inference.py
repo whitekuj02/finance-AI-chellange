@@ -91,6 +91,7 @@ def all_model_load(base_path: str | Path) -> None:
 def _get_models(base_path: str | Path) -> ModelBundle:
     """
     모델 불러오기 함수
+    캐쉬에 올라오지 않았다면 다시 로드, 하지만 올라왔다면 캐쉬에서 뽑아씀
     """
     key = str(Path(base_path).resolve())
     if key not in _MODEL_CACHE:
@@ -177,6 +178,7 @@ def extract_answer_only(text: str, original_question: str) -> str:
 def make_prompt_auto(text, rag):
     """
     프롬포트 함수
+    rag prompt, question prompt, system prompt 를 통해 message를 만듦
     """
 
     # RAG 문서 안내
@@ -226,10 +228,10 @@ def make_prompt_auto(text, rag):
 
 def inference(question, doc, score, tokenizer, model, generation_config):
     """
-    모델 inference 함수
+    LLM inference 함수
     """
 
-    rag = doc if score > 0.75 else ""
+    rag = doc if score > 0.75 else "" # Reranker score threshold
 
     input_message = make_prompt_auto(question, rag)
     # print(input_message)

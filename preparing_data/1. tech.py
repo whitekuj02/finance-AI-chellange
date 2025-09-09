@@ -5,7 +5,9 @@ import pandas as pd
 
 def process_trendyol(trendyol_name: str):
     """
-    trendyol/cybersecurity 객관식 보안 데이터 셋 로딩 함수
+    trendyol/cybersecurity 주관식 보안 데이터 셋 로딩 함수
+    trendyol_name : cybersecurity가 있는 path
+    output : question, answer 의 keys 로 구성된 dict
     """
     ds = load_dataset(trendyol_name, split="train")
     for rec in tqdm(ds, desc="Trendyol→JSONL"):
@@ -16,7 +18,10 @@ def process_trendyol(trendyol_name: str):
 
 def process_cybermetric(path: str):
     """
-    cybermetric 주관식 보안 데이터 셋 로딩 함수
+    cybermetric 객관식 보안 데이터 셋 로딩 함수
+    path : Cybermetric 이 있는 path
+    output : question과 answer로 구성된 dict ( 이 때 answer는 correct answer )
+    wrong answer는 사용하지 않음
     """
     with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
@@ -36,7 +41,7 @@ def process_cybermetric(path: str):
         ans_text = ""
         if isinstance(sol, str):
             sol_u = sol.strip().upper()
-            ans_text = (answers_norm.get(sol_u) or sol.strip())
+            ans_text = (answers_norm.get(sol_u) or sol.strip()) # correct answer 만 사용
         elif isinstance(sol, int):
             # 숫자면 A=0, B=1…로 가정하여 인덱싱
             letters = sorted(answers_norm.keys())
@@ -60,6 +65,8 @@ def process_cybermetric(path: str):
 def save_jsonl(records, out_path: str):
     """
     jsonl 로 한 번에 저장하는 함수
+    records : 저장할 list[dict]
+    out_path : 저장할 파일의 path
     """
     n = 0
     with open(out_path, "w", encoding="utf-8") as w:
@@ -71,6 +78,7 @@ def save_jsonl(records, out_path: str):
 def read_jsonl(file_path):
     """
     jsonl 을 읽는 함수
+    file_path : 읽을 jsonl 파일 path
     """
     data = []
     with open(file_path, "r", encoding="utf-8") as f:
@@ -82,6 +90,8 @@ def read_jsonl(file_path):
 def save_csv(data, save_file_name):
     """
     csv 를 저장하는 함수
+    data : jsonl 로 읽은 파일
+    save_file_name : csv 파일 path
     """
     rag_data = []
 

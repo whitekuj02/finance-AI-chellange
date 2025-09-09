@@ -31,6 +31,8 @@ import warnings
 def split_by_article(text):
     """
     제N조의 N항을 기준으로 법을 나누는 함수
+    text : 법 pdf text
+    output : 나누어진 text list
     """
     # '제 N조' 앞에서 split
     pattern = r'(제\s*\d+조(?:의\d+)?\s*\([^)]+\)[\s\S]*?)(?=제\s*\d+조(?:의\d+)?\s*\([^)]+\)|\Z)'
@@ -39,6 +41,8 @@ def split_by_article(text):
 def load_law(law_path):
     """
     법 pdf 를 pdfplumber 로 읽는 함수
+    law_path : 법 관련 pdf 가 들어있는 폴더 path
+    output : pdfplumber 로 읽고 전처리 한 text list
     """
     pdf_path = [law_path + f"/{i}" for i in os.listdir(law_path)]
 
@@ -66,6 +70,7 @@ def load_law(law_path):
 def load_tech(tech_path):
     """
     보안 객관 주관 데이터를 읽는 함수 (미리 만들어 둔 CSV)
+    tech_path : 1. tech.py 에서 만들어둔 CSV path
     """
     tech_data = pd.read_csv(tech_path)
     tech_array = list(tech_data['data'])
@@ -74,7 +79,8 @@ def load_tech(tech_path):
 
 def load_isms(isms_path):
     """
-    ISMS 데이터를 읽는 함수 (미리 만들어 둔 CSV)
+    ISMS 데이터를 읽는 함수 (미리 만들어 둔 text)
+    isms_path : 2. ISMS.py 에서 만들어둔 text path
     """
     ISMS_path = Path(isms_path)
     ISMS_list = [ISMS_path / Path(f"{i}") for i in os.listdir(ISMS_path)]
@@ -90,6 +96,8 @@ def recursive_split(pdf_all):
     """
     RecursiveCharacterTextSplitter 를 통해 text 데이터를 Chunk로 나누는 함수
     일부 후처리도 포함 : <> 나 [] 로 덮여있는 데이터 삭제
+    pdf_all : 모든 전처리된 pdf text 를 담은 list
+    output : chunk 에 넣기 쉽게 구성된 text list
     """
     pdf_split_data_recursive = []
 
