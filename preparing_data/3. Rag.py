@@ -130,7 +130,7 @@ if __name__ == "__main__":
     pdf_split_data = [i for i in pdf_all if len(i) > 100]
     pdf_split_data = recursive_split(pdf_split_data)
 
-    embd_path = "./model/gte-multilingual-base"
+    embd_path = "../model/gte-multilingual-base"
     embedding = HuggingFaceEmbeddings(
         model_name=embd_path,
         model_kwargs={"device": "cuda", "trust_remote_code": True},

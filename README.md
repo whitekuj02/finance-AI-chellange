@@ -50,9 +50,10 @@ python ./model/model_download.py
 - Preprocessing
 
 ```bash
-python ./preparing_data/1.\ tech.py
-python ./preparing_data/2.\ ISMS.py
-python ./preparing_data/3.\ Rag.py
+cd ./preparing_data
+python 1.\ tech.py
+python 2.\ ISMS.py
+python 3.\ Rag.py
 ```
 
 - Streamlit
