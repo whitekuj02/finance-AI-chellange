@@ -2,15 +2,15 @@ name: construct
 channels:
   - pytorch
   - nvidia
-  - conda-forge
+  - conda-forge 
   - defaults
 dependencies:
   - python=3.10
-  - cudatoolkit
   - pytorch
   - torchvision
   - torchaudio
-  - cudnn
+  - pytorch-cuda=11.8
+  - cudatoolkit=11.8
   - pandas
   - numpy
   - scikit-learn
@@ -29,6 +29,7 @@ dependencies:
   - sqlalchemy
   - mysql
   - pip
+  - ghostscript 
 
   # Pip Packages
   - pip:
@@ -60,3 +61,6 @@ dependencies:
       - transformers
       - wandb
       - xgboost
+      - camelot-py[cv]  
+      - PyMuPDF         
+      - frontend        
