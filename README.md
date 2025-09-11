@@ -63,7 +63,7 @@ python 3.\ Rag.py
 streamlit run streamlit_app.py
 ```
 
-- original --> test.csv inference
+- original --> test.csv inference (private score 재현 코드)
 ```bash
 original_code/1.\ RAG.ipynb
 original_code/2.\ Inference.ipynb
@@ -78,7 +78,7 @@ original_code/2.\ Inference.ipynb
 <br />
 
 ## Dataset
-- ISMS PDF : https://isms.kisa.or.kr/main/ispims/notice/ (KISA 한국인터넷진흥원)
-- Law PDF : https://www.law.go.kr/ (국가법령정보센터)
+- ISMS PDF : https://isms.kisa.or.kr/main/ispims/notice/ (KISA 한국인터넷진흥원) 
+- Law PDF : https://www.law.go.kr/ (국가법령정보센터) 
 - Tech dataset (subjective) : Trendyol/Trendyol-Cybersecurity-Instruction-Tuning-Dataset (https://huggingface.co/datasets/Trendyol/Trendyol-Cybersecurity-Instruction-Tuning-Dataset)
 - Tech dataset (multiple choice) : https://github.com/cybermetric/CyberMetric (Github) / https://huggingface.co/datasets/tihanyin/CyberMetric (Huggingface)
