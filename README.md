@@ -44,7 +44,8 @@ apt-get update && apt-get install -y ghostscript
 - Model download
 
 ```bash
-python ./model/model_download.py
+cd ./model
+python ./model_download.py
 ```
 
 - Preprocessing
