@@ -6,7 +6,7 @@
 - 주제 : 금융보안 실무에 적합한 개발 방법론 및 AI 모델을 발굴하기 위해 FSKU 평가지표를 기반으로 AI 모델의 성능을 경쟁
 - 기간 : 2025.08.01 ~ 2025.08.29
 - **Private Score : 0.67721 (1st)**
-
+- 관련 인터뷰: https://kode.kt.com/blog/article/10174?mainCategoryId=1&subCategoryId=3&nav_info=%2F%3F
 <br />
 
 ## TEAM 뛰어 🧑‍💻👩‍💻
